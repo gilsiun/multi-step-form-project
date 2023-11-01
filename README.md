@@ -10,7 +10,8 @@
 - Typescript를 사용합니다.
 - 필요한 라이브러리가 있다면 자유롭게 사용할 수 있습니다.
 
-![video](/design/video.mp4)
+https://github.com/avikus-ai/multi-step-form-project/assets/93635070/6b9032f2-95ae-4f2b-8607-0d7273fd758c
+
 
 ## 실행 방법
 
