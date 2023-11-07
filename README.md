@@ -16,6 +16,7 @@ https://github.com/avikus-ai/multi-step-form-project/assets/93635070/6b9032f2-95
 ## 실행 방법
 
 이 프로젝트는 vite로 생성되었습니다. Node.js와 NPM을 사용하여 로컬에서 실행할 수 있습니다.
+- node version >= 18
 
 ```bash
 # Install dependencies:
@@ -43,7 +44,7 @@ npm run dev
   - Please enter a number only
   - Please enter a number greater than 0
   - Max precision is 1 decimal places
-- 유효성 검사 전략은 Blur 이벤트입니다.
+- 유효성 검사 시점은 해당 필드의 Blur 이벤트가 발생했을 때 입니다.
 - 필수 입력 필드를 모두 채우지 않으면 다음 단계로 이동할 수 없다.
 - 마지막 단계에서 선택한 항목의 요약을 확인하고 작성한 내용의 제출을 확정한다.
 - 옵셔널 필드를 입력하지 않았다면 해당 필드는 요약 항목에 나타나지 않는다.
