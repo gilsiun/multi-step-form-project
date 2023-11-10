@@ -16,7 +16,7 @@ https://github.com/avikus-ai/multi-step-form-project/assets/93635070/6b9032f2-95
 ## 실행 방법
 
 이 프로젝트는 vite로 생성되었습니다. Node.js와 NPM을 사용하여 로컬에서 실행할 수 있습니다.
-- node version >= 18
+- node version >=18.0.0 <19
 
 ```bash
 # Install dependencies:
@@ -48,8 +48,6 @@ npm run dev
 - 필수 입력 필드를 모두 채우지 않으면 다음 단계로 이동할 수 없다.
 - 마지막 단계에서 선택한 항목의 요약을 확인하고 작성한 내용의 제출을 확정한다.
 - 옵셔널 필드를 입력하지 않았다면 해당 필드는 요약 항목에 나타나지 않는다.
-- 새로고침 시 현재 스텝을 유지한다. 이전 스텝을 포함한 모든 입력 값은 유지된다.
-- 새로고침 시 에러 메시지는 초기화된다.
 - 확정(Confirm) 버튼을 누르면 `POST /api/registration`으로 요청한다
 
   - payload 타입은 아래와 같다.
@@ -100,7 +98,7 @@ npm run dev
 
 ## Design
 
-디자인 예시입니다.
+디자인 예시입니다. 예시는 [아이콘](https://lucide.dev/)을 사용했습니다.
 
 Step1
 
