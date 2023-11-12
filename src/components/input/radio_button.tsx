@@ -1,6 +1,8 @@
 import React from "react"
 
-type RadioButtonProps = React.HTMLProps<HTMLInputElement> & { inputLabel: string }
+interface RadioButtonProps extends React.HTMLProps<HTMLInputElement> {
+  inputLabel: string
+}
 
 const RadioButton = ({ inputLabel, ...props }: RadioButtonProps) => {
   return (

@@ -1,6 +1,5 @@
 import { Data, InformationData } from "@/type"
-import { LabeledInput, LabeledInputNumber, LabeledInputText } from "../input/labeled_input"
-import RadioButton from "../input/radio_button"
+import { LabeledInputNumber, LabeledInputRadio, LabeledInputText } from "../input/labeled_input"
 import FormWrapper from "./form_wrapper"
 import React from "react"
 
@@ -10,10 +9,6 @@ type InformationFormProps = InformationData & {
 }
 
 const InformationForm = ({ updateFields, hasError, ...props }: InformationFormProps) => {
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateFields({ [e.target.name]: e.target.value })
-  }
-
   const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateFields({ numOfEngines: parseInt(e.target.value) })
   }
@@ -21,54 +16,58 @@ const InformationForm = ({ updateFields, hasError, ...props }: InformationFormPr
   return (
     <FormWrapper title="Information">
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", rowGap: "2rem", columnGap: "2rem" }}>
-        <LabeledInputText label={"Ship name"} name={"shipName"} value={props.shipName} onChange={onChange} />
-        <LabeledInputText label={"Call sign"} name={"callSign"} value={props.callSign} onChange={onChange} />
+        <LabeledInputText
+          label={"Ship name"}
+          name={"shipName"}
+          updateData={updateFields}
+          defaultValue={props.shipName}
+        />
+        <LabeledInputText
+          label={"Call sign"}
+          name={"callSign"}
+          updateData={updateFields}
+          defaultValue={props.callSign}
+        />
 
-        <LabeledInput label={"Engine"} requiredText="Please select one of the engines">
-          <div style={{ height: "3rem", display: "flex", alignItems: "center", gap: "3rem" }}>
-            <RadioButton
-              inputLabel="Single"
-              id={"engine-1"}
-              value={1}
-              checked={props.numOfEngines === 1}
-              onChange={onRadioChange}
-            />
-            <RadioButton
-              inputLabel="Twin"
-              id={"engine-2"}
-              value={2}
-              checked={props.numOfEngines === 2}
-              onChange={onRadioChange}
-            />
-          </div>
-        </LabeledInput>
+        <LabeledInputRadio
+          label={"Engine"}
+          items={[
+            { label: "Single", value: 1 },
+            { label: "Twin", value: 2 },
+          ]}
+          updateData={updateFields}
+          selectedValue={props.numOfEngines}
+          onChange={onRadioChange}
+          requiretext="Please select one of the engines"
+          needcheck={hasError}
+        />
 
         <LabeledInputNumber
           label={"Length"}
-          defaultValue={props.length || ""}
           name={"length"}
-          required
-          onChange={onChange}
-          postValidation={(value: number) => updateFields({ length: value })}
-          needCheck={hasError}
+          updateData={updateFields}
+          defaultValue={props.length || ""}
+          requiretext={`Please enter a Length`}
+          postvalidation={(value) => updateFields({ length: parseFloat(value) })}
+          needcheck={hasError}
         />
         <LabeledInputNumber
           label={"Beam"}
-          value={props.beam || ""}
           name={"beam"}
-          required
-          onChange={onChange}
-          postValidation={(value: number) => updateFields({ beam: value })}
-          needCheck={hasError}
+          updateData={updateFields}
+          defaultValue={props.beam || ""}
+          requiretext={`Please enter a Beam`}
+          postvalidation={(value) => updateFields({ beam: parseFloat(value) })}
+          needcheck={hasError}
         />
         <LabeledInputNumber
           label={"Draft"}
-          value={props.draft || ""}
           name={"draft"}
-          required
-          onChange={onChange}
-          postValidation={(value: number) => updateFields({ draft: value })}
-          needCheck={hasError}
+          updateData={updateFields}
+          defaultValue={props.draft || ""}
+          requiretext={`Please enter a Draft`}
+          postvalidation={(value) => updateFields({ draft: parseFloat(value) })}
+          needcheck={hasError}
         />
       </div>
     </FormWrapper>

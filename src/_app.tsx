@@ -20,8 +20,8 @@ const INITIAL_DATA: Data = {
 
 function App() {
   const [data, setData] = useState(INITIAL_DATA)
-  const [isFirstError, setFirstError] = useState(false)
-  const [isSecondError, setSecondError] = useState(false)
+  const [isFirstError, setFirstError] = useState<boolean>(false)
+  const [isSecondError, setSecondError] = useState<boolean>(false)
   const [isFinish, setFinish] = useState(false)
 
   const updateFields = (fields: Partial<Data>) => {
@@ -54,7 +54,7 @@ function App() {
         TrueDataZod.parse(data)
         setSecondError(false)
       } catch (e) {
-        console.error(e)
+        console.error("step2 error", e)
         setSecondError(true)
         return
       }

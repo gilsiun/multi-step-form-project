@@ -24,6 +24,7 @@ const TypeForm = ({ shipType, updateFields, isError }: TypeFormProps) => {
               <RadioButton
                 key={`ship-type-${i}`}
                 id={`ship-type-${i}`}
+                name={"shipType"}
                 inputLabel={type.toString()}
                 value={type}
                 checked={shipType === type}
@@ -32,7 +33,7 @@ const TypeForm = ({ shipType, updateFields, isError }: TypeFormProps) => {
             )
           })}
         </div>
-        <div style={{ visibility: isError ? "visible" : "hidden", marginTop: "3rem", color: "red", fontSize: ".8rem" }}>
+        <div style={{ visibility: isError ? "visible" : "hidden", marginTop: "3rem", color: "red", fontSize: "1rem" }}>
           Please select one of the types
         </div>
       </div>
